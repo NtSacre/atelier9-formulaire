@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formulaire de contact</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <form action="" class="formulaire">
+      <h1>Se Connecter</h1>
+      <div class="hr"></div>
+      <input
+        type="text"
+        name="nom"
+        id="nom"
+        placeholder="Enter votre nom"
+        class="over"
+      />
+      <span class="erreur"></span>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="Entrer votre adresse mail"
+        class="over"
+      />
+      <span class="erreur"></span><br />
+      <textarea
+        name="comment"
+        id="comment"
+        cols="28"
+        rows="4"
+        placeholder="Entrer un commentaire"
+        class="over"
+      ></textarea
+      ><br />
+      <span class="erreur"></span><br />
+      <button type="button" onclick="checkformulaire()">Soumettre</button>
+      <p>Vous avez pas de compte <a href="http://#">creer un compte</a></p>
+    </form>
+
+    <script>
+      function checkformulaire() {
+        let reg = /[@]/g;
+        let reg1 = /[.com]/g;
+        let erreur = document.getElementsByClassName("erreur");
+        if (
+          document.getElementById("nom").value.length === 0 ||
+          document.getElementById("email").value.length === 0 ||
+          document.getElementById("email").value.search(reg) < 0 ||
+          document.getElementById("email").value.search(reg1) < 0 ||
+          document.getElementById("comment").value.length === 0
+        ) {
+          for (let index = 0; index < erreur.length; index++) {
+            erreur[index].innerHTML =
+              "Tous les champs doivent etre bien rempli";
+          }
+        } else {
+          alert("le formulaire a été envoyé");
+        }
+      }
+    </script>
+  </body>
+</html>
